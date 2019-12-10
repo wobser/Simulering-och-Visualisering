@@ -11,16 +11,12 @@ masses = [mass1, mass2];
 %plot(times,out(:,1),'-o',times,out(:,2),'-o')
 for i=1:length(times)
     
-    x1 = out(:,1);
-    y1 = out(:,2);
-    b = plot(x1(i),y1(i),'om');
+
+    b = plot(out(i,1),out(i,2),'om');
     set(b,'Visible','On');
     hold on
-    x2 = out(:,4);
-    y2 = out(:,5);
-    c = plot(x2(i),y2(i),'om');
+    c = plot(out(i,4),out(i,5),'om');
     hold on
-    
     set(c,'Visible','On');
     drawnow
     axis([-5 25 -10 10]);

@@ -10,8 +10,16 @@ masses = [mass1, mass2];
 
 %plot(times,out(:,1),'-o',times,out(:,2),'-o')
 for i=1:length(times)
+    %angular momentum[ p = m*v (mass times velocity)
+    %                  v = hastighet för lilla massan minus hastigheter för
+    %                  stora massan
+    %                  r = vector expressed in a frame {A}
+    % angmom = cross product of r and p, angmom(l) = r x p
+    %If a particle has a position r (in frame {A}) and has momentum p, then
+    %the angular momentum of this particle about the origin of {A} is
+    %? = r × p
     
-
+    
     b = plot(out(i,1),out(i,2),'om');
     set(b,'Visible','On');
     hold on

@@ -18,11 +18,11 @@ for i=1:length(times)
     %If a particle has a position r (in frame {A}) and has momentum p, then
     %the angular momentum of this particle about the origin of {A} is
     %? = r × p
-    v1 = out(i,[7 8 9]);
-    v2 = out(i, [10 11 12]);
+    v1 = out(i,[7 8 9])
+    v2 = out(i, [10 11 12])
     vel = v2 - v1;
-    p = mass2*vel;
-    l = cross(out(i,[4 5 6]),vel)
+    p = mass2*vel
+    l = cross(out(i,[]),out(i,[]))
     b = plot(out(i,1),out(i,2),'om');
     set(b,'Visible','On');
     hold on
@@ -33,5 +33,4 @@ for i=1:length(times)
     axis([-5 25 -10 10]);
     set(b,'Visible','Off');
     set(c,'Visible','Off');
-
 end

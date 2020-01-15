@@ -25,16 +25,20 @@
 % definition of symbolic variables (and constants)
 syms m1 m2 lc1 l1 lc2 l2 q1 q2 dq1 dq2 g
 syms I1 I2   % inertia around the Z axis going through the CoM expressed in the local frame
-l1 = 2;
-l2 = 2;
-m1 = 1;
-m2 = 1;
-lc1 = 1;
-lc2 = 1;
-I1 =  1%[1,1;1,1];
-I2 =  1%[1,1;1,1];
-q1 = pi;
-q2 = pi/2;
+%g = -9.81; % g = -9.81
+%m1 = 5;
+%m2 = 10;
+%I1 = 3;
+%I2 = 4;
+%lc1 = 0.5;
+%l1 = 1;
+%lc2 = 0.5;
+%l2 = 1;
+%q1 = pi/4;
+%q2 = pi/3;
+%dq1 = 0.4;
+%dq2 = 0.5;
+
 
 % the manipulator inertia matrix
 H = [lc1^2*m1+I1+m2*l1^2+2*m2*l1*lc2*cos(q2)+m2*lc2^2+I2,   m2*l1*lc2*cos(q2)+m2*lc2^2+I2;
@@ -115,9 +119,14 @@ M2 = [ m2,  0,  0,  0,  0,  0;
         0,  0,  0,  0,  1,  0;
         0,  0,  0,  0,  0, I2];
 
+%Jcm1
+%M1
+%Jcm2
+%M2
+%blad = transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2
 
 % Verify the computation of the manipulator inertia matrix 
-H1 = simplify(transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2);
+H1 = simplify(transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2)
 H - H1
 
 

@@ -17,25 +17,28 @@ function S = forward_recursion2D(S)
 %
 
 
-  w_prev = [0 0 0]'; % No rotational speed before the first joint (we'll asume that first joint is connected to something very sturdy)
-  v_prev = [0 0 0]'; % No linear speed before the first joint
-  dw_prev = [0 0 0]'; % No rotational accelerations either before the first joint
-  dv_prev = [0 0 0]'; % No linear accelerations either before the first joint
-  r_prev = [0 0 0]'; % Previous center of mass position (for the first iteration the w_prev will anyway be zero.
+  w_prev = [0 0]'; % No rotational speed before the first joint (we'll asume that first joint is connected to something very sturdy)
+  v_prev = [0 0]'; % No linear speed before the first joint
+  dw_prev = [0 0]'; % No rotational accelerations either before the first joint
+  dv_prev = [0 0]'; % No linear accelerations either before the first joint
+  r_prev = [0 0]'; % Previous center of mass position (for the first iteration the w_prev will anyway be zero.
   
   
 for iL = 1:S.n % iterate over all links
 
   k = S.L(iL).k; % joint axis of rotation/translation expressed in the "world" frame
+  %S.L(iL).R
+  %S.L(iL).CoM 
   d = S.L(iL).R*S.L(iL).CoM; % vector from joint iL to CoM of link iL expressed in the "world"
-                             % frame  (in case of a revolute joint)
-  
+                            % frame  (in case of a revolute joint)
+  d = [d(1,1),d(2,1),0]'; %Change d to hold 3 values for cross product
   % Compute this once
   kXd = cross(k,d);
   
   if S.J(iL).type == 'R' % Revolute joint      
-        
+    w_prev
     S.L(iL).w = w_prev + k*S.dq(iL);
+    S.L(iL).w
     S.L(iL).v = v_prev + cross(w_prev, (S.L(iL).p-r_prev)) + kXd*S.dq(iL);
     
     S.L(iL).dw = dw_prev + cross(w_prev,k)*S.dq(iL);

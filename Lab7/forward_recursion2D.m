@@ -27,15 +27,24 @@ function S = forward_recursion2D(S)
 for iL = 1:S.n % iterate over all links
 
   k = S.L(iL).k; % joint axis of rotation/translation expressed in the "world" frame
+  S.L(iL).R
+  S.L(iL).CoM 
   d = S.L(iL).R*S.L(iL).CoM; % vector from joint iL to CoM of link iL expressed in the "world"
-                             % frame  (in case of a revolute joint)
-  
+                            % frame  (in case of a revolute joint)
+  d = [d(1,1),d(2,1),0]'; %Change d to hold 3 values for cross product
   % Compute this once
   kXd = cross(k,d);
   
   if S.J(iL).type == 'R' % Revolute joint      
-        
+    
+    S.L(iL).p = [S.L(iL).p; 0];
+    %A = "k*S.dq(iL);:";disp(A)
+    %k*S.dq(iL)
+    %A = "w_prev:";disp(A)
+    %w_prev
     S.L(iL).w = w_prev + k*S.dq(iL);
+    %A = "S.L(iL).w:";disp(A)
+    %S.L(iL).w
     S.L(iL).v = v_prev + cross(w_prev, (S.L(iL).p-r_prev)) + kXd*S.dq(iL);
     
     S.L(iL).dw = dw_prev + cross(w_prev,k)*S.dq(iL);
@@ -46,10 +55,10 @@ for iL = 1:S.n % iterate over all links
   end
   
   % Update all the 'revious' values.
-  w_prev = S.L(iL).w;
-  v_prev = S.L(iL).v;
-  dw_prev = S.L(iL).dw;
-  dv_prev = S.L(iL).dv;
-  r_prev = S.L(iL).p;
+  w_prev = [S.L(iL).w];
+  v_prev = [S.L(iL).v];
+  dw_prev = [S.L(iL).dw];
+  dv_prev = [S.L(iL).dv;];
+  r_prev = [S.L(iL).p;];
   
 end

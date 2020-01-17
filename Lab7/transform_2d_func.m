@@ -20,18 +20,19 @@ function T = transform_2d_func(t, th)
 % | 0   0   1    |
 
 % Create an empty matrix of size 3x3.
-T = zeros(3,3);
+T = zeros(4,4);
 
 % Add translation values
-T(1,3) = t(1);
-T(2,3) = t(2);
+T(1,4) = t(1);
+T(2,4) = t(2);
 
 % Bottom right 1.
-T(3,3) = 1;
+T(4,4) = 1;
 
 % The rotation matrix.
-R = [cos(th) -sin(th);
-     sin(th) cos(th)];
+R = [cos(th) -sin(th) 0;
+     sin(th) cos(th)  0;
+           0     0   1];
  
 % Copy the rotation matrix into T.
-T(1:2,1:2) = R;
+T(1:3,1:3) = R;

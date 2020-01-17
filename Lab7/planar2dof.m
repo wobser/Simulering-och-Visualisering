@@ -126,7 +126,7 @@ M2 = [ m2,  0,  0,  0,  0,  0;
 %blad = transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2
 
 % Verify the computation of the manipulator inertia matrix 
-H1 = simplify(transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2)
+H1 = simplify(transpose(Jcm1)*M1*Jcm1 + transpose(Jcm2)*M2*Jcm2);
 H - H1
 
 

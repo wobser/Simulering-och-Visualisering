@@ -26,12 +26,17 @@ for t = [0:delta_t:30]
     S = calc_pos2D(S);
      
     Jc = calc_Jc2D(S);
+    
+    % un - Compute the gyroscopic effect (no torque is generated)
+    % We need more than one joint and also where the other joint has
+    % a different rotational axis.
     un = zeros(S.n*6,1);
+    
     H = Jc' * M * Jc;
+    
     S = forward_recursion2D(S);
     xsi_dot0 = calc_link_accelerations2D(S);
-    A = "xsi_dot0:";disp(A)
-    xsi_dot0
+    
     uc = M*xsi_dot0 + un;
     c = Jc'*uc;
     te = Jc'*ue;
@@ -39,11 +44,11 @@ for t = [0:delta_t:30]
     S.dqq = pinv(H)*(te + tau - c);
     S.dq = S.dq + S.dqq * delta_t;
     S.q = S.q + S.dq * delta_t;
-    S.q(1)
+    %S.q(1)
     cla;
     Draw_System2D(S);
 
-    axis([-3 3 -3 3])
+    axis([-5 5 -5 5])
     
     xlabel('\bf X axis');
     ylabel('\bf Y axis');

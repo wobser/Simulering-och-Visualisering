@@ -35,7 +35,7 @@ for j = 1:S.n % iterate over all links
           %link_to_CoM' * cos(S.q);
           %1];
     else % Prismatic joint
-       % TODO, lol NOT
+       %
     end
   end
 end

@@ -40,7 +40,7 @@ for iL = 1:S.n % update all links positions (CoM) and rotation matrices
  T_joint_to_next_link = transform_2d_func(S.L(iL).Length, 0); 
  T_next_link = T_prev_link * T_joint_rotation * T_joint_to_next_link;
     
- S.L(iL).p = T_CoM(1:2,3);  % Extract the position
+ S.L(iL).p = T_CoM(1:2,3);  % Extract the position CoM
  S.L(iL).R = T_CoM(1:2, 1:2); % Extract the rotation matrix
  S.L(iL).transform_to_next_link = T_next_link;
  

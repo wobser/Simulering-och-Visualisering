@@ -4,16 +4,16 @@
 close all
 clear;clc
 
-I1 = 1;
-I2 = 2;
-I3 = 3;
+I1 = 1; %1 original value
+I2 = 2; %2 original value
+I3 = 3; %3 original value
 
-tf = 50;
-dt = 0.02;
+tf = 50; %50 original value
+dt = 0.02; %0.02 original value
 
-%w0 = [0.000,1,0.000];
+w0 = [0.000,1,0.000];
 %w0 = [0.05, 1, 0.05];
-w0 = [0.0001,1,0.0001];
+%w0 = [0.0001,1,0.0001];
 
 
 R{1} = eye(3);

@@ -47,13 +47,13 @@ S.tau = zeros(S.n,1);
 for iL = 1:S.n
     S.L(iL).R  = eye(3);   % rotation matrix of Link
     S.L(iL).p  = [ 0 0 ]'; % p position of CoM
-    S.L(iL).v  = [ 0 0 ]';
-    S.L(iL).dv = [ 0 0 ]';
-    S.L(iL).w  = [ 0 0 ]';
-    S.L(iL).dw = [ 0 0 ]';
+    S.L(iL).v  = [ 0 0 ]'; % linear velocity of the CoM
+    S.L(iL).dv = [ 0 0 ]'; % linear acceleration CoM
+    S.L(iL).w  = [ 0 0 ]'; % Angular velocity
+    S.L(iL).dw = [ 0 0 ]'; % Angular acceleration 
     S.L(iL).T  = [ 0 0 ]';
     S.L(iL).F  = [ 0 0 ]';
-    S.L(iL).k  = [ 0 0 1 ]';
+    S.L(iL).k  = [ 0 0 1 ]'; % rotate around z axis
     S.L(iL).transform_to_next_link = eye(3); % Note - in world coordinates(!)
 end
 

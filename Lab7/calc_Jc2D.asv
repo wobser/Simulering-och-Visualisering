@@ -24,16 +24,18 @@ for j = 1:S.n % iterate over all links
       Jc((j)*6-5:(j)*6-3,i) = cross( k , ( link_com - joint_pos ) );
       Jc((j)*6-2:(j)*6,i) = k;
       %Jc
-      if i == S.n
-          
-          
-          
-      end
+      %if i == S.n
+      %  Jc
+      %  pe = p2 + [CoM_to_next_link * cos(q);
+      %             CoM_to_next_link * sin(q)];
+      %    
+      %    
+      %end
       %Jc((j)*6-5:(j)*6-3,i) = [-link_to_CoM' * sin(S.q); % The longer link the faster any rotational changes will affect the pendulum.
           %link_to_CoM' * cos(S.q);
           %1];
     else % Prismatic joint
-       % TODO, lol NOT
+       %
     end
   end
 end

@@ -13,6 +13,6 @@ for i=1:S.n
     %A = "S.L(i).dv:";disp(A)
     %S.L(i).dv
     xsi_dot0(6*i-2:6*i,1) = S.L(i).dw;
-   %A = "S.L(i).dw:";disp(A)
+    %A = "S.L(i).dw:";disp(A)
     %S.L(i).dw
 end
